@@ -1,7 +1,7 @@
-//¹®Á¦¸í	: ¿ÀÇÂÃ¤ÆÃ¹æ(Kakao - 2019)
-//³­ÀÌµµ	: Lv2
-//ÇØ°áÀÏ	: 2020.09.09
-//ºí·Î±×	: O
+//ë¬¸ì œëª…	: ì˜¤í”ˆì±„íŒ…ë°©(Kakao - 2019)
+//ë‚œì´ë„	: Lv2
+//í•´ê²°ì¼	: 2020.09.09
+//ë¸”ë¡œê·¸	: O
 
 package programmers_Lv2;
 
@@ -17,7 +17,7 @@ public class OpenCheating {
 	}
 	
 	public static String[] solution(String[] record) {
-		//mapÀ» »ç¿ëÇØ¼­ uid, nickName ÀúÀå
+		//mapì„ ì‚¬ìš©í•´ì„œ uid, nickName ì €ì¥
         HashMap<String, Object> userData = new HashMap<String, Object>();
         
         String[] arrStr = new String[3];
@@ -41,10 +41,10 @@ public class OpenCheating {
 			
 			switch (arrStr[0]) {
 			case "Enter":
-				answer[i] = (String) userData.get(arrStr[1]) + "´ÔÀÌ µé¾î¿Ô½À´Ï´Ù.";
+				answer[i] = (String) userData.get(arrStr[1]) + "ë‹˜ì´ ë“¤ì–´ì™”ìŠµë‹ˆë‹¤.";
 				break;
 			case "Leave":
-				answer[i] = (String) userData.get(arrStr[1]) + "´ÔÀÌ ³ª°¬½À´Ï´Ù.";
+				answer[i] = (String) userData.get(arrStr[1]) + "ë‹˜ì´ ë‚˜ê°”ìŠµë‹ˆë‹¤.";
 				break;
 			default:
 				break;

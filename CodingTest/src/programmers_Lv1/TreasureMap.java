@@ -1,7 +1,7 @@
-//¹®Á¦¸í	: ºñ¹ĞÁöµµ(Kakao - 2018)
-//³­ÀÌµµ	: Lv1
-//ÇØ°áÀÏ	: 2020.09.02
-//ºí·Î±×	: O
+//ë¬¸ì œëª…	: ë¹„ë°€ì§€ë„(Kakao - 2018)
+//ë‚œì´ë„	: Lv1
+//í•´ê²°ì¼	: 2020.09.02
+//ë¸”ë¡œê·¸	: O
 
 package programmers_Lv1;
 
@@ -15,7 +15,7 @@ public class TreasureMap {
 		int[] arr2 = {30,1,21,17,28};
 		
 		String[] result = solution(arr1, arr2, n);
-		System.out.println("°á°ú°ª : " + Arrays.toString(result));
+		System.out.println("ê²°ê³¼ê°’ : " + Arrays.toString(result));
 
 	}
 	
@@ -39,7 +39,7 @@ public class TreasureMap {
 		return answer;
 	}
 
-	//Á¤¼öÇü ¹è¿­À» ¸Å°³º¯¼ö·Î ¹Ş¾Æ Áöµµ·Î º¯È¯½ÃÅ°´Â ¸Ş¼­µå
+	//ì •ìˆ˜í˜• ë°°ì—´ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ ì§€ë„ë¡œ ë³€í™˜ì‹œí‚¤ëŠ” ë©”ì„œë“œ
 	private static String[] changeNum(int[] arrNum, int n) {
 		String[] result = new String[n];
 
@@ -61,7 +61,7 @@ public class TreasureMap {
 		return result;
 	}
 	
-	//¾ÏÈ£È­µÈ ¹®ÀÚ¿­À» ¸Å°³º¯¼ö·Î Áöµµ »ı¼º
+	//ì•”í˜¸í™”ëœ ë¬¸ìì—´ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì§€ë„ ìƒì„±
 	private static String createMap(String encMap) {
 		String decMap = "";
 		
