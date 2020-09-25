@@ -1,5 +1,11 @@
+//문제명	: 키패드 누르기(카카오 인턴쉽 - 2020)
+//난이도	: Lv1
+//해결일	: 2020.09.26
+//블로그	: O
 
-public class main {
+package programmers_Lv1;
+
+public class KeyPad {
 
 	public static void main(String[] args) {
 		//int[] numbers = {1,3,4,5,8,2,1,4,5,9,5};
@@ -98,4 +104,5 @@ public class main {
 			return "L";
 		}
 	}
+
 }
