@@ -2,100 +2,54 @@
 public class main {
 
 	public static void main(String[] args) {
-		//int[] numbers = {1,3,4,5,8,2,1,4,5,9,5};
-		//String hand = "right";
-		
-		//int[]numbers = {7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2};
-		//String hand = "left";
-		
-		int[]numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-		String hand = "right";
-		
-		String answer = solution(numbers, hand);
+		int[] p = {5, 4, 7, 2, 0, 6};
+		int[] c = {4, 6, 4, 9, 2, 3};
+		String answer = solution(6, p, c);
 		System.out.println("answer : " + answer);
 
 	}
 	
-	public static String solution(int[] numbers, String hand) {
-        String answer = "";
-        String temp = "";
-        int leftPos = 10, rightPos = 12;
-        
-        for(int i=0; i<numbers.length; i+=1) {
-        	switch (numbers[i]) {
-			case 1:
-			case 4:
-			case 7:
-				answer += "L";
-				leftPos = numbers[i];
-				break;
-			case 3:
-			case 6:
-			case 9:
-				answer += "R";
-				rightPos = numbers[i];
-				break;
-			default:
-				temp = returnHand(numbers[i], hand, rightPos, leftPos);
-				answer += temp;
-				if(temp.equals("L"))
-					if(numbers[i] != 0)
-						leftPos = numbers[i];
-					else
-						leftPos = 11;
-				else
-					if(numbers[i] != 0)
-						rightPos = numbers[i];
-					else
-						rightPos = 11;
-				break;
-			}
-        }
-        return answer;
-    }
-	
-	private static String returnHand(int number, String hand, int rightPos, int leftPos) {
-		if(number == 0) {
-			number = 11;
-		}
-		int left = 0, right = 0;
+	//n : 생산량과 주문량이 주어지는 날의 수
+	//p : 일별 생산량은 담은 배열
+	//c : 일별 주무량을 담은 배열
+	public static String solution(int n, int[] p, int[] c) {
+		String answer = "";
+		int[] arrPrice = {100, 50, 25};
+		int misCount = 0;
+		int money = 0;
+		int count = 0;
 		
-		if(leftPos == 2 || leftPos == 5 || leftPos == 8 || leftPos == 11) {
-			if(number - leftPos >= 0) {
-				left = ((number - leftPos)/3);
-			}else {
-				left = ((number - leftPos)/(-3));
+		for (int i = 0; i < n; i += 1) {
+			try {
+				if (p[i] >= c[i]) {
+					p[i + 1] += p[i] - c[i];
+					money += c[i] * arrPrice[misCount];
+					count += 1;
+					misCount = 0;
+				} else {
+					p[i + 1] += p[i];
+					misCount += 1;
+					count += 1;
+				}
+			} catch (Exception e) {
+				if (p[i] >= c[i]) {
+					money += c[i] * arrPrice[misCount];
+					count += 1;
+				} else {
+					misCount += 1;
+					count += 1;
+				}
 			}
-		}else {
-			if(number - leftPos >= 0) {
-				left = ((number - 1 - leftPos)/3) + 1;
-			}else {
-				left = ((number - 1 - leftPos)/(-3)) + 1;
-			}
+			
+			System.out.println("money : " +money);
+			System.out.println("count : " + count);
+			
+			if(misCount == 3)
+				break;
 		}
-		
-		if(rightPos == 2 || rightPos == 5 || rightPos == 8 || rightPos == 11) {
-			if(number - rightPos >= 0) {
-				right = ((number - rightPos)/3);
-			}else {
-				right = ((number - rightPos)/(-3));
-			}
-		}else {
-			if(number - rightPos >= 0) {
-				right = ((number + 1 - rightPos)/3) + 1;
-			}else {
-				right = ((number + 1 - rightPos)/(-3)) + 1;
-			}
-		}
-		
-		if(right > left) {
-			return "L";
-		}else if(right < left) {
-			return "R";
-		}else if(right == left && hand.equals("right")){
-			return "R";
-		}else {
-			return "L";
-		}
+
+		answer = String.format("%.2f", (double)money / count);
+		System.out.println(answer);
+		return answer;
 	}
 }
