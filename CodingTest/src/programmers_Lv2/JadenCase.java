@@ -9,7 +9,7 @@ public class JadenCase {
 
 	public static void main(String[] args) {
 		String answer = solution("for the last week");
-		System.out.println(answer);
+		System.out.println("answer : " + answer);
 
 	}
 	
