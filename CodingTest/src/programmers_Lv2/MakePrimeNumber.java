@@ -1,4 +1,4 @@
-//문제명	: 소수 만들기
+//문제명	: 소수 만들기(연습문제)
 //난이도	: Lv2
 //해결일	: 20.10.09
 //블로그	: O
@@ -18,7 +18,8 @@ public class MakePrimeNumber {
 		System.out.println("answer : " + answer);
 
 	}
-	
+
+	//중복되는 숫자가 있는 소수찾기(ArrayList)
 	private static int solution(int[] nums) {
         int answer = 0;
         ArrayList<Integer> list = new ArrayList<Integer>();
@@ -51,6 +52,7 @@ public class MakePrimeNumber {
 
 }
 
+// 2. 중복되는 숫자가 없도록 하여 소수찾기(HashSet)
 //private static int solution(int[] nums) {
 //    int answer = 0;
 //    HashSet<Integer> set = new HashSet<Integer>();
