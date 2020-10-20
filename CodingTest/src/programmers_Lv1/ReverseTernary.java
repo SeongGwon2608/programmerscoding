@@ -1,11 +1,17 @@
+//문제명	: 3진법 뒤집기(월간코드챌린지)
+//난이도	: Lv1
+//해결일	: 2020.10.21
+//블로그	: O
+
+package programmers_Lv1;
+
 import java.util.ArrayList;
 
-public class main {
+public class ReverseTernary {
 
 	public static void main(String[] args) {
 		int answer = solution(125);
 		System.out.println("answer : " + answer);
-
 	}
 
 	public static int solution(int n) {
@@ -56,4 +62,5 @@ public class main {
 
 		return result;
 	}
+
 }
