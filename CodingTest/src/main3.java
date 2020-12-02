@@ -1,68 +1,76 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class main3 {
 
 	public static void main(String[] args) {
-		int k = 4;
-		String[] votes = {"AVANT", "PRIDO", "SONATE", "RAIN", "MONSTER", "GRAND", "SONATE", "AVANT", "SONATE", "RAIN", "MONSTER", "GRAND", "SONATE", "SOULFUL", "AVANT", "SANTA"};
-		//String[] votes = {"AAD", "AAA", "AAC", "AAB"};
-		String answer = solution(2, votes);
+		String encrypted_text1 = "qyyigoptvfb"; 
+		String key1 = "abcdefghijk";
+		
+		String key = "abcdefghijk";
+		String answer = solution("qyyigoptvfb", "abcdefghijk", 3);
+		
 		System.out.println("answer : " + answer);
 	}
 	
-	public static String solution(int k, String[] votes) {
-		String result = "";
-		Arrays.sort(votes);
+	public static String solution(String encrypted_text, String key, int rotation) {
+        String answer = "";
+        
+        String result = rotationString(encrypted_text, rotation);
+        
+        char[] charEncText = result.toCharArray();
+        char[] charKey = key.toCharArray();
+        
+        for(int i=0; i<result.length(); i+=1) {
+        	answer += changechar(charEncText[i], charKey[i]);
+        	System.out.println(answer);
+        }
+        System.out.println(answer);
+
+        return answer;
+    }
+	
+	private static char changechar(char encText, char key) {
+		int nKey = key - 96;
 		
-		ArrayList<String> carName = new ArrayList<String>();
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		String temp = "";
-		int count = 0;
-		
-		for(int i=0; i<votes.length; i+=1) {
-			if(temp.equals("")) {
-				carName.add(votes[i]);
-				temp = votes[i];
-				count += 1;
-			}else if(temp.equals(votes[i])) {
-				count += 1;
-			}else {
-				list.add(count);
-				carName.add(votes[i]);
-				temp = votes[i];
-				count = 1;
-			}
-		}
-		list.add(count);
-		
-		String[] grade = new String[list.size()];
-		for(int i =0; i<grade.length; i+=1) {
-			grade[i] = list.get(i) + "_" + carName.get(i);
-		}
-		Arrays.sort(grade);
-		
-		System.out.println(Arrays.toString(grade));
-		int num = 0;
-		
-		for(int i=grade.length-1; i>grade.length-1-k; i-=1) {
-			num += grade[i].charAt(0)-'0';
-		}
-		
-		int loserNum = 0;
-		int i=0;
-		
-		String[] strTemp = new String[2];
-		while(loserNum < num) {
-			loserNum += grade[i].charAt(0) - '0';
-			i+=1;
-			strTemp = grade[i].split("_");
-			result = strTemp[1];
-		}
+		char result = (char)(encText - nKey);
+		if(result < 97)
+			result = (char)(result + 26);
 		
 		return result;
 	}
+	
+	private static String rotationString(String strText, int rotation) {
+		String result = "";
+		char[] charString = strText.toCharArray();
 
+		Deque<String> strDeque = new LinkedList<String>();
+		for (int i = 0; i < charString.length; i += 1) {
+			strDeque.offer(charString[i] + "");
+		}
+		System.out.println(strDeque);
+		
+		if (rotation > 0) {
+			for (int i = 0; i < rotation; i += 1) {
+				String str = strDeque.pollFirst();
+				strDeque.offerLast(str);
+				System.out.println(strDeque);
+			}
+		}else if(rotation < 0) {
+			for (int i = 0; i < (rotation * -1); i += 1) {
+				String str = strDeque.pollLast();
+				strDeque.offerFirst(str);
+				System.out.println(strDeque);
+			}
+		}
+		
+		for(int i=0; i<charString.length; i+=1) {
+			result += strDeque.poll();
+		}
+		return result;
+	}
 }
 
 
