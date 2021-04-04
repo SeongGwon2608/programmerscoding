@@ -17,7 +17,7 @@ public class RepeatBin {
 	}
 
 	public static int[] solution(String s) {
-		//이진 변환의 횟수(changeCount), 변환과정에서 제거된 모든 0의 갯수(count)
+		//이진 변환의 횟수(changeCount), 변환과정에서 제거된 모든 0의 갯수(removeCount)
         int[] answer = {0,0};
         int changeCount = 0;
         int removeCount = 0;
